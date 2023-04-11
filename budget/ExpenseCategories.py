@@ -1,4 +1,4 @@
-from . import Expense
+import Expense
 import matplotlib.pyplot as plt
 
 import timeit
@@ -18,7 +18,7 @@ def main():
             print("Sets are NOT equal by subset test")
             
             
-    zt1 = timeit.timeit(stmt='expenses.categorize_for_loop()',
+    zt1 = print(timeit.timeit(stmt='expenses.categorize_for_loop()',
                   setup = 
                   '''
 import Expense
@@ -27,11 +27,11 @@ expenses.read_expenses('data/spending_data.csv')
                   ''',
                   number=100000,
                   globals=globals()
-                  )
+                  ))
     
     print(zt1)
 
-    zt2 = timeit.timeit(stmt='expenses.categorize_set_comprehension()',
+    print(timeit.timeit(stmt='expenses.categorize_set_comprehension()',
                   setup = 
                   '''
 import Expense
@@ -40,9 +40,9 @@ expenses.read_expenses('data/spending_data.csv')
                   ''',
                   number=100000,
                   globals=globals()
-                  )
+                  ))
     
-    print(zt2)
+    
     
     fix, ax = plt.subplots()
     labels = ['Necessary', 'Food', 'Unnecessary']
